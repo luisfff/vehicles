@@ -2,7 +2,7 @@
 
 Vehicles API
 
-This API allows you to create, read, update, and delete vehicles using the UnitOfWork pattern and Entity Framework Core (EF) migrations in .NET 7.
+This API allows you to create, read, update, and delete vehicles using the UnitOfWork pattern and Entity Framework Core (EF) migrations.
 
 ## Getting Started
 Clone the repository to your local machine.

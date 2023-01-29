@@ -2,14 +2,10 @@
 This API allows you to create, read, update, and delete vehicles using the UnitOfWork pattern and Entity Framework Core (EF) migrations.
 
 ## Getting Started
-Clone the repository: git clone https://github.com/luisfff/vehicles
-
-Restore dependencies: dotnet restore
-
-Create database and apply migrations: dotnet ef database update
-
-Run the project: dotnet run
-
+Clone the repository: git clone https://github.com/luisfff/vehicles <br>
+Restore dependencies: dotnet restore <br>
+Create database and apply migrations: dotnet ef database update <br>
+Run the project: dotnet run <br>
 Access the API at http://localhost:5131
 
 ## Endpoints

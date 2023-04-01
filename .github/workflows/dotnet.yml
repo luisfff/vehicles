@@ -13,32 +13,32 @@ jobs:
   build:
     runs-on: windows-latest
 
-steps:
-  - name: Checkout code
-    uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  - name: Setup .NET Core SDK
-    uses: actions/setup-dotnet@v1
-    with:
-      dotnet-version: '6.0.x'
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
 
-  - name: Restore NuGet packages
-    run: dotnet restore
+      - name: Restore NuGet packages
+        run: dotnet restore
 
-  - name: Build application
-    run: dotnet build --configuration Release --no-restore
+      - name: Build application
+        run: dotnet build --configuration Release --no-restore
 
-  - name: Test application
-    run: dotnet test --verbosity normal
+      - name: Test application
+        run: dotnet test --verbosity normal
 
-  - name: Publish application
-    run: dotnet publish --configuration Release --output ${{ env.DOTNET_ROOT }}/myapp
+      - name: Publish application
+        run: dotnet publish --configuration Release --output ${{ env.DOTNET_ROOT }}/myapp
 
-  - name: Upload artifact
-    uses: actions/upload-artifact@v2
-    with:
-      name: dotnet-app
-      path: ${{ env.DOTNET_ROOT }}/myapp
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dotnet-app
+          path: ${{ env.DOTNET_ROOT }}/myapp
 
   deploy:
     runs-on: windows-latest

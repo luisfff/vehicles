@@ -5,9 +5,9 @@ name: Build and deploy ASP.Net Core app to Azure Web App - vehicles-action
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'vehicles-action'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_1234 }}
+          publish-profile: ${{ AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .

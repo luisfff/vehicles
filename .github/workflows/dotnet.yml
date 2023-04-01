@@ -13,34 +13,32 @@ jobs:
   build:
     runs-on: windows-latest
 
-    steps:
-      - uses: actions/checkout@v2
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v2
 
-      - name: Set up .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0.x'
-          
-      - name: Find project files
-        run: find . -type f -name "*.csproj"
+  - name: Setup .NET Core SDK
+    uses: actions/setup-dotnet@v1
+    with:
+      dotnet-version: '6.0.x'
 
-      - name: Restore dependencies
-        run: dotnet restore
-        
-      - name: Build
-        run: dotnet build --no-restore
-        
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
+  - name: Restore NuGet packages
+    run: dotnet restore
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+  - name: Build application
+    run: dotnet build --configuration Release --no-restore
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+  - name: Test application
+    run: dotnet test --verbosity normal
+
+  - name: Publish application
+    run: dotnet publish --configuration Release --output ${{ env.DOTNET_ROOT }}/myapp
+
+  - name: Upload artifact
+    uses: actions/upload-artifact@v2
+    with:
+      name: dotnet-app
+      path: ${{ env.DOTNET_ROOT }}/myapp
 
   deploy:
     runs-on: windows-latest
@@ -63,3 +61,5 @@ jobs:
           slot-name: 'production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
+    env:
+      DOTNET_ROOT: ${{ env.DOTNET_ROOT }}

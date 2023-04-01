@@ -8,9 +8,6 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-env:
-  MY_DOTNET_ROOT: ${{ runner.temp }}/dotnet
   
 jobs:
   build:
@@ -65,4 +62,4 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
     env:
-      DOTNET_ROOT: ${{ env.DOTNET_ROOT }}
+      DOTNET_ROOT: 'staging'

@@ -4,11 +4,11 @@ This API allows you to create, read, update, and delete vehicles using the UnitO
 ## Getting Started
 Clone the repository: git clone https://github.com/luisfff/vehicles
 
-Restore dependencies: `dotnet restore`
+Restore dependencies: `dotnet restore`.
 
-Create database and apply migrations: `dotnet ef database update`
+Create database and apply migrations: `dotnet ef database update`.
 
-Run the project: `dotnet run`
+Run the project: `dotnet run`.
 
 Access the API at http://localhost:5131
 

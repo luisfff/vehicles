@@ -63,7 +63,6 @@ jobs:
           
       - name: Replace SQL connection string 3
         run: |
-          sudo apt-get install -y jq
           jq '.ConnectionStrings.vehiclesDb = $newConnectionString' --arg newConnectionString "${{ secrets.SQL_CONNECTION_STRING }}" appsettings.json > appsettings.tmp && mv appsettings.tmp appsettings.json
       - name: Display Appsettings
         run: cat appsettings.json

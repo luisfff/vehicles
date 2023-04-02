@@ -1,4 +1,4 @@
-﻿namespace Vehicles.Api.Models;
+﻿namespace Vehicles.Application.Models;
 
 public class KeyValuePairResource
 {

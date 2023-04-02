@@ -1,6 +1,4 @@
-﻿using Vehicles.Api.Models;
-
-namespace Vehicles.Application.Models.Vehicle;
+﻿namespace Vehicles.Application.Models.Vehicle;
 
 public class VehicleResource
 {

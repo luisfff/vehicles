@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Vehicles.Api.Models;
 using Vehicles.Application.Models;
 using Vehicles.Application.Models.Vehicle;
 using Vehicles.Infrastructure.Entities;

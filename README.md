@@ -6,7 +6,7 @@ Clone the repository: git clone https://github.com/luisfff/vehicles
 
 Restore dependencies: `dotnet restore`.
 
-Create database and apply migrations: `dotnet ef database update`.
+Create database and apply migrations: in the Vehicles.Api folder run `dotnet ef database update`.
 
 Run the project: `dotnet run`.
 

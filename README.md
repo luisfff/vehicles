@@ -10,6 +10,8 @@ Create database and apply migrations: `dotnet ef database update`.
 
 Run the project: `dotnet run`.
 
+Note: Production version of deployment can be acessed at: https://vehicles-action.azurewebsites.net/swagger/index.html
+
 Access the API at http://localhost:5131
 
 ## Endpoints

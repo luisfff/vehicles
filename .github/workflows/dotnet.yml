@@ -58,7 +58,7 @@ jobs:
       - name: Display Appsettings
         run: cat appsettings.json
           
-      - name: Replace SQL connection string 3
+      - name: Replace SQL connection string
         run: |
           jq '.ConnectionStrings.vehiclesDb = $newConnectionString' --arg newConnectionString "${{ secrets.SQL_CONNECTION_STRING }}" appsettings.json > appsettings.tmp && rm appsettings.json && mv appsettings.tmp appsettings.json
       

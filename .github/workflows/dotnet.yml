@@ -55,21 +55,13 @@ jobs:
         with:
           name: vehicles-app
   
-      - name: Replace SQL connection string
-        run: |
-          sed -i 's|"vehiclesDb": ".*"|"vehiclesDb": "'"***"'"|' appsettings.json
       - name: Display Appsettings
         run: cat appsettings.json
           
       - name: Replace SQL connection string 3
         run: |
           jq '.ConnectionStrings.vehiclesDb = $newConnectionString' --arg newConnectionString "${{ secrets.SQL_CONNECTION_STRING }}" appsettings.json > appsettings.tmp && rm appsettings.json && mv appsettings.tmp appsettings.json
-      - name: Display Appsettings
-        run: cat appsettings.json
-          
-      - name: Replace SQL connection string 2
-        run: |
-          sed -i 's|"vehiclesDb": ".*"|"vehiclesDb": "'"${{ secrets.SQL_CONNECTION_STRING }}"'"|' appsettings.json
+      
       - name: Display Appsettings
         run: cat appsettings.json
           

@@ -61,6 +61,13 @@ jobs:
       - name: Display Appsettings
         run: cat appsettings.json
           
+      - name: Replace SQL connection string 3
+        run: |
+          sudo apt-get install -y jq
+          jq '.ConnectionStrings.vehiclesDb = $newConnectionString' --arg newConnectionString "${{ secrets.SQL_CONNECTION_STRING }}" appsettings.json > appsettings.tmp && mv appsettings.tmp appsettings.json
+      - name: Display Appsettings
+        run: cat appsettings.json
+          
       - name: Replace SQL connection string 2
         run: |
           sed -i 's|"vehiclesDb": ".*"|"vehiclesDb": "'"${{ secrets.SQL_CONNECTION_STRING }}"'"|' appsettings.json

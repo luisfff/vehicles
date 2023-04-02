@@ -60,7 +60,8 @@ jobs:
           echo "SQL_CONNECTION_STRING=${{ secrets.SQL_CONNECTION_STRING }}" >> $GITHUB_ENV
           
       - name: Set SQL connection string
-        run: sed -i "s|\"vehiclesDb\": \".*\"|\"vehiclesDb\": \"${{ secrets.SQL_CONNECTION_STRING }}\"|" appsettings.json
+        run: |
+          sed -i "s|\"vehiclesDb\": \".*\"|\"vehiclesDb\": \"${{ secrets.SQL_CONNECTION_STRING }}\"|" appsettings.json
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp

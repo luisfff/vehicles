@@ -63,7 +63,7 @@ jobs:
           
       - name: Replace SQL connection string 2
         run: |
-          sed -i 's|"vehiclesDb": ".*"|"vehiclesDb": "'"${{ secrets.SQL_CONNECTION_STRING }}"'"|g' appsettings.json
+          sed -i 's#"vehiclesDb": ".*"#"vehiclesDb": "'"${{ secrets.SQL_CONNECTION_STRING }}"'"#g' appsettings.json
       - name: Display Appsettings
         run: cat appsettings.json
           

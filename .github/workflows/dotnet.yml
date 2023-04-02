@@ -58,10 +58,12 @@ jobs:
       - name: Replace SQL connection string
         run: |
           sed -i 's|"vehiclesDb": ".*"|"vehiclesDb": "'"***"'"|g' appsettings.json
+      - name: Display Appsettings
+        run: cat appsettings.json
           
-      - name: Replace Connection String
-        run: | 
-          sed -i 's/"vehiclesDb": ".*/"vehiclesDb": "Server=tcp:vehicle-server.database.windows.net,1433;Initial Catalog=vehicles_db;Persist Security Info=False;User ID=adminlb;Password=Aluno24394;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"/' appsettings.json
+      - name: Replace SQL connection string 2
+        run: |
+          sed -i 's|"vehiclesDb": ".*"|"vehiclesDb": "'"${{ secrets.SQL_CONNECTION_STRING }}"'"|g' appsettings.json
       - name: Display Appsettings
         run: cat appsettings.json
           

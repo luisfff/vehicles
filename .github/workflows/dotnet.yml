@@ -54,6 +54,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: vehicles-app
+          
+      - name: Set SQL connection string
+        run: |
+          echo "SQL_CONNECTION_STRING=${{ secrets.SQL_CONNECTION_STRING }}" >> $GITHUB_ENV
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
